@@ -1,36 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Click the Target Game</title>
+  <meta charset="UTF-8">
+  <title>Moving Red Box</title>
   <style>
     body {
-      text-align: center;
-      font-family: Arial;
+      margin: 0;
+      overflow: hidden;
     }
-    #gameArea {
-      width: 400px;
-      height: 400px;
-      border: 2px solid black;
-      margin: auto;
-      position: relative;
-      background: #f0f0f0;
-    }
-    #target {
+
+    #box {
       width: 50px;
       height: 50px;
-      border-radius: 50%;
-      background: red;
+      background-color: red;
       position: absolute;
+      left: 0;
+      top: 100px;
     }
   </style>
 </head>
 <body>
-  <h1>Click the Target!</h1>
-  <h2>Score: <span id="score">0</span></h2>
-  <div id="gameArea">
-    <div id="target"></div>
-  </div>
 
-  <script src="game.js"></script>
+  <div id="box"></div>
+
+  <script>
+    const box = document.getElementById('box');
+    let position = 0;
+    const speed = 2; // pixels per frame
+
+    const interval = setInterval(() => {
+      const screenWidth = window.innerWidth;
+      const maxPosition = screenWidth - box.offsetWidth;
+
+      if (position < maxPosition) {
+        position += speed;
+        box.style.left = position + 'px';
+      } else {
+        clearInterval(interval); // Stop moving when near the right edge
+      }
+    }, 10); // Run every 10ms
+  </script>
+
 </body>
 </html>
