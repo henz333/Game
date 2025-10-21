@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Moving Red Box</title>
+  <title>box</title>
   <style>
     body {
       margin: 0;
@@ -26,7 +26,7 @@
   <script>
     const box = document.getElementById('box');
     let position = 0;
-    const speed = 2; // pixels per frame
+    const speed = 2; 
 
     const interval = setInterval(() => {
       const screenWidth = window.innerWidth;
@@ -36,7 +36,7 @@
         position += speed;
         box.style.left = position + 'px';
       } else {
-        clearInterval(interval); // Stop moving when near the right edge
+        clearInterval(interval);
       }
     }, 10); // Run every 10ms
   </script>
